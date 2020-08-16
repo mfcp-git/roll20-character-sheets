@@ -1,0 +1,214 @@
+<div class="3colrow">
+	<div class="col">
+    	<span class="charlabel">Name:</span><br />
+		<input type="text" name="attr_character_name" /><br />
+		<span class="charlabel">Setting:</span><br />
+		<input type="text" name="attr_setting" />
+	</div>
+	<div class="col">
+		<br />
+		<span class="charlabel">Character Points (Max/Curr)</span>
+		<input type="number" class="number" name="attr_charpoints_max" value=4 disabled="true" /><input type="number" class="number-box" name="attr_charpoints" />
+	</div>
+</div>	
+<br />
+<div class="3colrow">
+	<div class="col">
+				<span class="charlabel">Wounds (Max/Curr)</span>
+				<input type="number" class="number" name="attr_wounds_max"/><input type="number" class="number-box" name="attr_wounds" /><br />
+				<span class="charlabel">Reputation (Max/Curr)</span>
+				<input type="number" class="number" name="attr_reputation_max"/><input type="number" class="number-box" name="attr_reputation" />
+	</div>
+	<div class="col">				
+				<span class="charlabel">Bruises (Max/Curr)</span>
+				<input type="number" class="number" name="attr_bruises_max"/><input type="number" class="number-box" name="attr_bruises" /><br />
+				<span class="charlabel">Sanity (Max/Curr)</span>
+				<input type="number" class="number" name="attr_sanity_max"/><input type="number" class="number-box" name="attr_sanity" />
+	</div>
+	<div class="col">				
+				<span class="charlabel">Fatigue (Max/Curr)</span>
+				<input type="number" class="number" name="attr_fatiuge_max"/><input type="number" class="number-box" name="attr_fatigue" /><br />
+				<span class="charlabel">Morality (Max/Curr)</span>
+				<input type="number" class="number" name="attr_morality_max"/><input type="number" class="number-box" name="attr_morality" />
+	</div>
+</div>	
+<br />
+<div class="3colrow">
+	<div class="col">				
+	<button type="roll" name="roll_testInnateMinimum" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Innate Minimum}} {{result=[[1d6+1d6+1]]}}"><label class="buttonlabel"> Innate Minimum Roll</label></button>
+	</div>
+	<div class="col">				
+	</div>
+	<div class="col">
+	</div>
+</div>
+<br />
+	<div>
+		<h2>Characteristics</h2>
+		<div class="statbox">
+			<div><span class="characteristic-text" >Attack: All attacks, armed or unarmed, melee or missile</span>
+			<input type="number" name="attr_Attack_nature" class="number"><span> x </span>
+			<input type="number" name="attr_Attack_nurture" class="number"><span> = </span>
+			<input type="number" name="attr_Attack_total" class="number-box" value="@{Attack_nature} * @{Attack_nurture}" disabled="true">
+			<button type="roll" name="roll_testattackunskilled" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Attack}} {{unskilled=(Nature @{Attack_nature} Nurture @{Attack_nurture})}} {{result=[[1d6+1d6 + @{Attack_total}]]}}"><label class="buttonlabel">Unskilled Roll</label></button>
+			</div>
+			
+			<span class="charshort">Ability</span><input type="text" name="attr_Attack_ability" class="charname-box">
+			<button type="roll" name="roll_testattack" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Attack}} {{ability=@{Attack_ability} (Nature @{Attack_nature} Nurture @{Attack_nurture})}} {{result=[[1d6*1d6 + @{Attack_total}]]}}"></button>
+			
+			<div class="2colrow">
+				<div class="col">
+					<fieldset class="repeating_AttackSkills"> 
+					<span class="charshort">Skill</span><input type="text" name="attr_Attack_skill" class="charname">
+					<button type="roll" name="roll_testattackskill" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Attack}} {{skill=@{Attack_skill} (Nature @{Attack_nature} Nurture @{Attack_nurture})}} {{result=[[{1d6*1d6} + @{Attack_total}]]}}"></button>
+					</fieldset>
+				</div>
+				<div class="col">
+					<fieldset class="repeating_AttackTalent"> 
+					<span class="charshort">Talent</span><input type="text" name="attr_Attack_talent" class="charname">
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="statbox">
+			<div><span class="characteristic-text" >Defence: All defences against attacks, and general movement</span>
+			<input type="number" name="attr_Defence_nature" class="number"><span> x </span>
+			<input type="number" name="attr_Defence_nurture" class="number"><span> = </span>
+			<input type="number" name="attr_Defence_total" class="number-box" value="@{Defence_nature} * @{Defence_nurture}" disabled="true">
+			<button type="roll" name="roll_testDefenceunskilled" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Defence}} {{unskilled=(Nature @{Defence_nature} Nurture @{Defence_nurture})}} {{result=[[1d6+1d6 + @{Defence_total}]]}}"><label class="buttonlabel">Unskilled Roll</label></button>
+			</div>
+			
+			<span class="charshort">Ability</span><input type="text" name="attr_Defence_ability" class="charname-box">
+			<button type="roll" name="roll_testDefence" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Defence}} {{ability=@{Defence_ability} (Nature @{Defence_nature} Nurture @{Defence_nurture})}} {{result=[[1d6*1d6 + @{Defence_total}]]}}"></button>
+
+			<div class="2colrow">
+				<div class="col">
+					<fieldset class="repeating_DefenceSkills"> 
+					<span class="charshort">Skill</span><input type="text" name="attr_Defence_skill" class="charname">
+					<button type="roll" name="roll_testDefenceskill" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Defence}} {{skill=@{Defence_skill} (Nature @{Defence_nature} Nurture @{Defence_nurture})}} {{result=[[{1d6*1d6} + @{Defence_total}]]}}"></button>
+					</fieldset>
+				</div>
+				<div class="col">
+					<fieldset class="repeating_DefenceTalent"> 
+					<span class="charshort">Talent</span><input type="text" name="attr_Defence_talent" class="charname">
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="statbox">
+			<div><span class="characteristic-text" >Social Skills: Reputation attacks/defence and social interactions</span>
+			<input type="number" name="attr_Social_nature" class="number"><span> x </span>
+			<input type="number" name="attr_Social_nurture" class="number"><span> = </span>
+			<input type="number" name="attr_Social_total" class="number-box" value="@{Social_nature}*@{Social_nurture}" disabled="true">
+			<button type="roll" name="roll_testSocialunskilled" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Social Skills}} {{unskilled=(Nature @{Social_nature} Nurture @{Social_nurture})}} {{result=[[1d6+1d6 + @{Social_total}]]}}"><label class="buttonlabel">Unskilled Roll</label></button>
+			</div>
+			
+			<span class="charshort">Ability</span><input type="text" name="attr_Social_ability" class="charname-box">
+			<button type="roll" name="roll_testSocial" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Social Skills}} {{ability=@{Social_ability} (Nature @{Social_nature} Nurture @{Social_nurture})}} {{result=[[1d6*1d6 + @{Social_total}]]}}"></button>
+			
+			<div class="2colrow">
+				<div class="col">
+					<fieldset class="repeating_SocialSkills"> 
+					<span class="charshort">Skill</span><input type="text" name="attr_Social_skill" class="charname">
+					<button type="roll" name="roll_testSocialskill" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Social Skills}} {{skill=@{Social_skill} (Nature @{Social_nature} Nurture @{Social_nurture})}} {{result=[[{1d6*1d6} + @{Social_total}]]}}"></button>
+					</fieldset>
+				</div>
+				<div class="col">
+					<fieldset class="repeating_SocialTalent"> 
+					<span class="charshort">Talent</span><input type="text" name="attr_Social_talent" class="charname">
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="statbox">
+			<div><span class="characteristic-text" >Ego: Mental attacks/defence and general observation</span>
+			<input type="number" name="attr_Ego_nature" class="number"><span> x </span>
+			<input type="number" name="attr_Ego_nurture" class="number"><span> = </span>
+			<input type="number" name="attr_Ego_total" class="number-box" value="@{Ego_nature}*@{Ego_nurture}" disabled="true">
+			<button type="roll" name="roll_testEgounskilled" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Ego}} {{unskilled=(Nature @{Ego_nature} Nurture @{Ego_nurture})}} {{result=[[1d6+1d6 + @{Ego_total}]]}}"><label class="buttonlabel">Unskilled Roll</label></button>
+			</div>
+			
+			<span class="charshort">Ability</span><input type="text" name="attr_Ego_ability" class="charname-box">
+			<button type="roll" name="roll_testEgo" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Ego}} {{ability=@{Ego_ability} (Nature @{Ego_nature} Nurture @{Ego_nurture})}} {{result=[[1d6*1d6 + @{Ego_total}]]}}"></button>
+
+			<div class="2colrow">
+				<div class="col">
+					<fieldset class="repeating_EgoSkills"> 
+					<span class="charshort">Skill</span><input type="text" name="attr_Ego_skill" class="charname">
+					<button type="roll" name="roll_testEgoskill" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Ego}} {{skill=@{Ego_skill} (Nature @{Ego_nature} Nurture @{Ego_nurture})}} {{result=[[{1d6*1d6} + @{Ego_total}]]}}"></button>
+					</fieldset>
+				</div>
+				<div class="col">
+					<fieldset class="repeating_EgoTalent"> 
+					<span class="charshort">Talent</span><input type="text" name="attr_Ego_talent" class="charname">
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="statbox">
+			<div><span class="characteristic-text" >Extraordinary: That special steampunk something</span>
+			<input type="number" name="attr_Extraordinary_nature" class="number"><span> x </span>
+			<input type="number" name="attr_Extraordinary_nurture" class="number"><span> = </span>
+			<input type="number" name="attr_Extraordinary_total" class="number-box" value="@{Extraordinary_nature}*@{Extraordinary_nurture}" disabled="true">
+			<button type="roll" name="roll_testExtraordinaryunskilled" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Extraordinary}} {{unskilled=(Nature @{Extraordinary_nature} Nurture @{Extraordinary_nurture})}} {{result=[[1d6+1d6 + @{Extraordinary_total}]]}}"><label class="buttonlabel">Unskilled Roll</label></button>
+			</div>
+			
+			<span class="charshort">Ability</span><input type="text" name="attr_Extraordinary_ability" class="charname-box">
+			<button type="roll" name="roll_testExtraordinary" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Extraordinary}} {{ability=@{Extraordinary_ability} (Nature @{Extraordinary_nature} Nurture @{Extraordinary_nurture})}} {{result=[[1d6*1d6 + @{Extraordinary_total}]]}}"></button>
+
+			<div class="2colrow">
+				<div class="col">
+					<fieldset class="repeating_ExtraordinarySkills"> 
+					<span class="charshort">Skill</span><input type="text" name="attr_Extraordinary_skill" class="charname">
+					<button type="roll" name="roll_testExtraordinaryskill" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Extraordinary}} {{skill=@{Extraordinary_skill} (Nature @{Extraordinary_nature} Nurture @{Extraordinary_nurture})}} {{result=[[{1d6*1d6} + @{Extraordinary_total}]]}}"></button>
+					</fieldset>
+				</div>
+				<div class="col">
+					<fieldset class="repeating_ExtraordinaryTalent"> 
+					<span class="charshort">Talent</span><input type="text" name="attr_Extraordinary_talent" class="charname">
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="statbox">
+			<div><span class="characteristic-text" >Occupation: Profession or vocation</span>
+			<input type="number" name="attr_Occupation_nature" class="number"><span> x </span>
+			<input type="number" name="attr_Occupation_nurture" class="number"><span> = </span>
+			<input type="number" name="attr_Occupation_total" class="number-box" value="@{Occupation_nature}*@{Occupation_nurture}" disabled="true">
+			<button type="roll" name="roll_testOccupationunskilled" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Occupation}} {{unskilled=(Nature @{Occupation_nature} Nurture @{Occupation_nurture})}} {{result=[[1d6+1d6 + @{Occupation_total}]]}}"><label class="buttonlabel">Unskilled Roll</label></button>
+			</div>
+			
+			<span class="charshort">Ability</span><input type="text" name="attr_Occupation_ability" class="charname-box">
+			<button type="roll" name="roll_testOccupation" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Occupation}} {{ability=@{Occupation_ability} (Nature @{Occupation_nature} Nurture @{Occupation_nurture})}} {{result=[[1d6*1d6 + @{Occupation_total}]]}}"></button>
+
+			<div class="2colrow">
+				<div class="col">
+					<fieldset class="repeating_OccupationSkills"> 
+					<span class="charshort">Skill</span><input type="text" name="attr_Occupation_skill" class="charname">
+					<button type="roll" name="roll_testOccupationskill" value="&{template:manifold} {{name=@{character_name}}} {{characteristic=Occupation}} {{skill=@{Occupation_skill} (Nature @{Occupation_nature} Nurture @{Occupation_nurture})}} {{result=[[{1d6*1d6} + @{Occupation_total}]]}}"></button>
+					</fieldset>
+				</div>
+				<div class="col">
+					<fieldset class="repeating_OccupationTalent"> 
+					<span class="charshort">Talent</span><input type="text" name="attr_Occupation_talent" class="charname">
+					</fieldset>
+				</div>
+			</div>
+		</div>
+</div>
+
+<rolltemplate class="sheet-rolltemplate-manifold">
+  <div class="sheet-container sheet-color-{{color}}">
+    <div class="sheet-header">
+      {{#name}}<div class="sheet-name">{{name}}</div>{{/name}}
+      {{#characteristic}}<div class="sheet-characteristic">{{characteristic}}</div>{{/characteristic}}
+    </div>
+    <div class="sheet-content">
+      {{#allprops() name characteristic desc color}}
+      <div class="sheet-key">{{key}}</div>
+      <div class="sheet-value">{{value}}</div>
+      {{/allprops() name characteristic desc color}}
+      {{#desc}}<div class="sheet-desc">{{desc}}</div>{{/desc}}
+    </div>
+  </div>
+</rolltemplate>
