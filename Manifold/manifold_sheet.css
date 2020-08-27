@@ -1,7 +1,8 @@
 /* Set the min-width so that when the window is resized the look will stay consistant */
 
 .charsheet {
-	background-color: Khaki;
+/*	background-color: #ffe066; */
+	background-color: #ffffff
 	min-width: 800px;
 }
 
@@ -34,12 +35,18 @@ input {
 	width: 165px;
 }
 
+select {
+	display: inline-block;
+	width: 165px;
+}
+
 img {
 	max-height: 100px;
 }
 
 textarea {
 	resize: vertical;
+	width: 99%;
 }
 
 /* Targetted styling that only effects elements with these classes */
@@ -97,7 +104,7 @@ span.sheet-charshort {
 span.sheet-characteristic-text {
 	display: inline-block;
 	font-weight: bold;
-	min-width: 55%;
+	/*min-width: 55%;*/
 	padding-right: 4px;
 }
 
